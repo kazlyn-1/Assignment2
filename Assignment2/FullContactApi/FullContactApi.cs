@@ -1,10 +1,6 @@
 ﻿using System;
-using System.IO;
-using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using System.Xml;
 using System.Xml.Linq;
 
 namespace FullContactCSharp
@@ -25,17 +21,13 @@ namespace FullContactCSharp
         //public Task<FullContactPerson> LookupPersonByEmailAsync(string email)
         public async Task<FullContactPerson> LookupPersonByEmailAsync(string email)
         {
-            string requestUri = $"v2/person.xml?email={email}";
+            var resp = await _client.GetAsync($"v2/person.xml?email={email}");
+            if (!resp.IsSuccessStatusCode)
+                return null;
 
-            var resp = await _client.GetAsync(requestUri);
-            if (resp.IsSuccessStatusCode)
-            {
-                string respString = await resp.Content.ReadAsStringAsync();
-                XElement rootElm = XElement.Parse(respString);
-                return FullContactPerson.FromXml(rootElm);
-            }
-
-            return null;
+            string respString = await resp.Content.ReadAsStringAsync();
+            XElement rootElm = XElement.Parse(respString);
+            return FullContactPerson.FromXml(rootElm);
         }
     }
 }
