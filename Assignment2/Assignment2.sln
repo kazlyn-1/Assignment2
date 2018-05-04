@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment2", "Assignment2\Assignment2.csproj", "{8606C19C-8DEE-4086-B8F2-00AAD3F5182C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullContactApi", "FullContactApi\FullContactApi.csproj", "{FEB81CC7-5C3C-4197-8D24-6C01F4747035}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8606C19C-8DEE-4086-B8F2-00AAD3F5182C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8606C19C-8DEE-4086-B8F2-00AAD3F5182C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8606C19C-8DEE-4086-B8F2-00AAD3F5182C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8606C19C-8DEE-4086-B8F2-00AAD3F5182C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEB81CC7-5C3C-4197-8D24-6C01F4747035}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEB81CC7-5C3C-4197-8D24-6C01F4747035}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEB81CC7-5C3C-4197-8D24-6C01F4747035}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEB81CC7-5C3C-4197-8D24-6C01F4747035}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {49E359DC-F292-4D39-9A11-806639A47880}
+	EndGlobalSection
+EndGlobal
