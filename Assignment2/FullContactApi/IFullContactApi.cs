@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace FullContactApi
+namespace FullContactCSharp
 {
     interface IFullContactApi
     {

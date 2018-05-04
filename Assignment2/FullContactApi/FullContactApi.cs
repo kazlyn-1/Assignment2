@@ -1,17 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Linq;
 
-namespace FullContactApi
+namespace FullContactCSharp
 {
-    public class FullContactApi : IFullContactApi
+    public class FullContactApi  : IFullContactApi
     {
-        private string _apiKey = "VY8Vi17Gx5K8U2h7k0dEK0eAHDa61LTm";
+        private readonly HttpClient _client;
 
-        public Task<FullContactPerson> LookupPersonByEmailAsync(string email)
+        public FullContactApi(string apiKey)
         {
-            throw new NotImplementedException();
+            _client = new HttpClient
+            {
+                BaseAddress = new Uri("https://api.fullcontact.com")
+            };
+            _client.DefaultRequestHeaders.Add("X-FullContact-APIKey", apiKey);
+        }
+
+        //public Task<FullContactPerson> LookupPersonByEmailAsync(string email)
+        public async Task<FullContactPerson> LookupPersonByEmailAsync(string email)
+        {
+            string requestUri = $"v2/person.xml?email={email}";
+
+            var resp = await _client.GetAsync(requestUri);
+            if (resp.IsSuccessStatusCode)
+            {
+                string respString = await resp.Content.ReadAsStringAsync();
+                XElement rootElm = XElement.Parse(respString);
+                return FullContactPerson.FromXml(rootElm);
+            }
+
+            return null;
         }
     }
 }
