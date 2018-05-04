@@ -14,10 +14,8 @@ namespace FullContactCSharp
         {
             _client = new RestClient("https://api.fullcontact.com");
             _client.AddDefaultHeader("X-FullContact-APIKey", apiKey);
-            
         }
-
-        //public Task<FullContactPerson> LookupPersonByEmailAsync(string email)
+        
         public async Task<FullContactPerson> LookupPersonByEmailAsync(string email)
         {
             var request = new RestRequest("v2/person.xml?email={email}", Method.POST);
@@ -28,8 +26,6 @@ namespace FullContactCSharp
                 return personRestResponse.Data;
 
             return null;
-            //XElement rootElm = XElement.Parse(content);
-            //return FullContactPerson.FromXml(rootElm);
         }
     }
 }
