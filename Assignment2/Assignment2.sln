@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment2", "Assignment2\Assignment2.csproj", "{8606C19C-8DEE-4086-B8F2-00AAD3F5182C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment2", "Assignment2\Assignment2.csproj", "{8606C19C-8DEE-4086-B8F2-00AAD3F5182C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullContactApi", "FullContactApi\FullContactApi.csproj", "{FEB81CC7-5C3C-4197-8D24-6C01F4747035}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FullContactCSharp", "FullContactApi\FullContactCSharp.csproj", "{FEB81CC7-5C3C-4197-8D24-6C01F4747035}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
