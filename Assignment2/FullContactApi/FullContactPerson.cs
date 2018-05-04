@@ -1,15 +1,116 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Net;
+﻿using System.Collections.Generic;
 using System.Reflection;
-using System.Reflection.Emit;
 using System.Text;
-using System.Xml.Linq;
 
 namespace FullContactCSharp
 {
+    public class FullContactPerson
+    {
+        public decimal Likelihood { get; set; }
+
+        /// <summary>Gets the contact info.</summary>
+        public ContactInfo ContactInfo { get; set; }
+
+        /// <summary>Gets the social profiles.</summary>
+        public List<SocialProfile> SocialProfiles { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("Likelihood: {0:P}\n{1}\n\nSocial Profiles:\n{2}",
+                Likelihood,
+                ContactInfo != null ? ContactInfo.ToString() : "",
+                SocialProfiles != null ? string.Join("\n", SocialProfiles) : ""
+                );
+        }
+    }
+
+    public class ContactInfo
+    {
+        public string FamilyName { get; set; }
+
+        /// <summary>Gets the full name.</summary>
+        public string FullName { get; set; }
+
+        /// <summary>Gets the given name.</summary>
+        public string GivenName { get; set; }
+
+        /// <summary>Gets the websites for this ContactInfo object.</summary>
+        public List<string> Websites { get; set; }
+
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendFormat("FamilyName: {0}, Given Name: {1}, Full Name: {2}\n",
+                FamilyName,
+                GivenName,
+                FullName);
+
+            if (Websites != null && Websites.Count != 0)
+            {
+                sb.AppendLine("Websites:");
+                sb.AppendJoin("\n", Websites);
+            }
+
+            return sb.ToString();
+        }
+    }
+
+    public class SocialProfile
+    {
+        /// <summary>Gets the type.</summary>
+        public string Type { get; set; }
+
+        /// <summary>Gets the type id.</summary>
+        public string TypeId { get; set; }
+
+        /// <summary>Gets the type name. 'FriendlyName'</summary>
+        public string TypeName { get; set; }
+
+        /// <summary>Gets the bio.</summary>
+        public string Bio { get; set; }
+
+        /// <summary>Gets the url.</summary>
+        public string Url { get; set; }
+
+        /// <summary>Gets the username.</summary>
+        public string UserName { get; set; }
+
+        /// <summary>Number of people following.</summary>
+        public int Following { get; set; }
+
+        /// <summary>Number of followers.</summary>
+        public int Followers { get; set; }
+
+        private PropertyInfo[] _pi;
+
+        public override string ToString()
+        {
+            _pi = GetType().GetProperties();
+            var sb = new StringBuilder();
+
+            foreach (var info in _pi)
+            {
+                var value = info.GetValue(this, null);
+                if (value != null)
+                {
+                    if (value is int && ((int)value) != 0 || 
+                        value is string && !string.IsNullOrWhiteSpace(value.ToString()))
+                        sb.AppendLine(info.Name + ": " + value);
+                }
+            }
+
+            return sb.ToString();
+        }
+    }
+
+
+
+
+   /*
+    #region Xml Parsing 
+
     public class FullContactPerson
     {
         public double? Likelihood { get; private set; }
@@ -183,5 +284,7 @@ namespace FullContactCSharp
             return sb.ToString();
         }
     }
+
+    #endregion*/
 
 }

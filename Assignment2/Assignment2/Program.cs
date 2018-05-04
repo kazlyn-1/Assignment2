@@ -8,13 +8,13 @@ namespace Assignment2
 {
     class Program
     {
-        private static FullContactApi _api;
+        private static FullContactClient _api;
 
         private static async Task AsyncMain()
         {
             string apiKey = "VY8Vi17Gx5K8U2h7k0dEK0eAHDa61LTm";
-            _api = new FullContactApi(apiKey);
-            
+            _api = new FullContactClient(apiKey);
+
             while (true)
             {
                 Console.Write("Press 'Q' to exit or enter email address:");
