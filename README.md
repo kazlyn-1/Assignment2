@@ -1,4 +1,2 @@
 # QualificationExam
-Assignment2
-C#-scoped assignment that involves mastering asynchronous programming with async/await.
-Includes C# implementation of FullContact REST API.
+Assignment2:C#-scoped assignment that involves mastering asynchronous programming with async/await, includes C# implementation of FullContact REST API.
